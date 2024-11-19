@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "express-validator": "^7.2.0",
     "mongoose": "^8.8.2",
     "next": "15.0.3",
     "react": "18.3.1",

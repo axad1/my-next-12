@@ -1,4 +1,4 @@
-require("@/db/config")();
+require("@/db/connect")();
 
 const Hero = require("./Hero");
 

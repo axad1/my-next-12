@@ -1,4 +1,5 @@
 import { Hero } from "@/db/operations";
+import { ValidateCreateHero } from "./route-validator";
 
 export default async (req, res) => {
   try {
@@ -8,6 +9,7 @@ export default async (req, res) => {
         res.json({ status: true, data: heroes });
         break;
       case "POST":
+        await ValidateCreateHero(req, res);
         const body = req.body;
         console.log("body => ", body);
         const hero = await Hero.create(req.body);
