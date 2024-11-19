@@ -1,4 +1,4 @@
-const Hero = require("../models/Hero");
+const Hero = require("@/db/models/Hero");
 
 const findAll = async () => await Hero.find();
 

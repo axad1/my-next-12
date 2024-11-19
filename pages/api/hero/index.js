@@ -1,4 +1,4 @@
-import { Hero } from "../../../db/operations";
+import { Hero } from "@/db/operations";
 
 export default async (req, res) => {
   try {
