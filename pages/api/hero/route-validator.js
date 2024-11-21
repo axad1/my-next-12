@@ -43,40 +43,56 @@ const CreateHero = checkSchema(
 const GetHero = checkSchema(
   {
     id: {
-      isNumeric: true,
-      errorMessage: "id should be a numeric value",
+      isMongoId: true,
+      errorMessage: "Invalid MongoId",
     },
   },
-  ["params"]
+  ["query"]
+);
+
+const DeleteHero = checkSchema(
+  {
+    id: {
+      isMongoId: true,
+      errorMessage: "Invalid MongoId",
+    },
+  },
+  ["query"]
 );
 
 const UpdateHero = checkSchema(
   {
     id: {
-      in: "params",
-      isInt: true,
-      errorMessage: "id should be a numeric value",
+      in: "query",
+      isMongoId: true,
+      errorMessage: "Invalid MongoId",
     },
-    content: {
+    superHero: {
       optional: true,
       trim: true,
       notEmpty: true,
       escape: true,
-      errorMessage: "content value is invalid",
+      errorMessage: "superHero value is invalid",
     },
-    completed: {
+    realName: {
       optional: true,
-      isBoolean: {
-        errorMessage: "completed field should contain boolean value",
-      },
+      trim: true,
+      notEmpty: true,
+      escape: true,
+      errorMessage: "realName value is invalid",
     },
   },
   ["body"]
 );
 
 const ValidateCreateHero = (req, res) => checkValidation(req, res, CreateHero);
+const ValidateGetHero = (req, res) => checkValidation(req, res, GetHero);
 const ValidateUpdateHero = (req, res) => checkValidation(req, res, UpdateHero);
+const ValidateDeleteHero = (req, res) => checkValidation(req, res, DeleteHero);
 
 module.exports = {
   ValidateCreateHero,
+  ValidateGetHero,
+  ValidateUpdateHero,
+  ValidateDeleteHero,
 };
