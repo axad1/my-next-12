@@ -7,7 +7,8 @@ const {
 const checkValidation = async (req, res, validations) => {
   await Promise.all(validations.map((validation) => validation.run(req)));
   const result = validationResult(req, { strictParams: ["body"] });
-  if (!result.isEmpty()) return res.status(404).json(result.array());
+  if (!result.isEmpty())
+    return res.status(400).json({ status: false, data: result.array() });
   req.body = matchedData(req, {
     locations: ["body"],
   });

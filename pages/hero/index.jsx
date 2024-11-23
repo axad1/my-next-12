@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Router from "next/router";
 
-export default function hero({ heroes = [] }) {
+export default function Heroes({ heroes = [] }) {
   console.log("props => ", heroes);
 
   const handleDelete = async (_id) => {
@@ -31,10 +31,11 @@ export default function hero({ heroes = [] }) {
         {heroes.map((hero) => {
           return (
             <li key={hero._id}>
-              <p>
+              <Link href={`/hero/${hero._id}`}>
                 <b>{hero.superHero}</b> -- {hero.realName} --{" "}
                 <button onClick={() => handleDelete(hero._id)}>Delete</button>
-              </p>
+                <hr />
+              </Link>
             </li>
           );
         })}
@@ -44,7 +45,7 @@ export default function hero({ heroes = [] }) {
 }
 
 // // it will work fine with build
-// hello.getInitialProps = async (ctx) => {
+// Heroes.getInitialProps = async (ctx) => {
 //   const res = await fetch("http://localhost:3000/api/hero");
 //   const data = await res.json();
 //   return {
