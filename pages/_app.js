@@ -1,7 +1,18 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+// import "mdb-ui-kit/css/mdb.min.css";
+
+// import "mdb-react-ui-kit/dist/css/mdb.min.css";
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+import Layout from "@/components/Layout";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
-export default MyApp
+export default MyApp;

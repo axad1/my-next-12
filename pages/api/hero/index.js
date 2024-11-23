@@ -11,7 +11,6 @@ export default async (req, res) => {
       case "POST":
         await ValidateCreateHero(req, res);
         const body = req.body;
-        console.log("body => ", body);
         const hero = await Hero.create(req.body);
         res.status(201).json({ status: true, data: hero });
         break;
